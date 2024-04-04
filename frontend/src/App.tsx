@@ -1,7 +1,8 @@
 import "./App.css";
+import { Routing } from "./components";
 
 function App() {
-  return <div></div>;
+  return <Routing />;
 }
 
 export default App;
