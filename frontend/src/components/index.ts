@@ -8,6 +8,7 @@ import LandingBlack from "./banners/landing-black";
 import FreelancersBox from "./boxes/freelancers-box";
 import BusinessBox from "./boxes/business-box";
 import MarketplaceBox from "./boxes/marketplace-box";
+import LinkGroup from "./links/link-group";
 
 export {
   Routing,
@@ -20,4 +21,5 @@ export {
   FreelancersBox,
   BusinessBox,
   MarketplaceBox,
+  LinkGroup,
 };

@@ -9,6 +9,7 @@ export default {
         grey: "#f9fafc",
         chalk: "#c1cacf",
         greyishblack: "#434344",
+        blue: "#1698f4",
       },
 
       backgroundColor: {},
