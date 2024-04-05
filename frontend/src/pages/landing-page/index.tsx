@@ -6,6 +6,8 @@ const LandingPage = () => {
       <LandingNavigationBar />
 
       <Hero />
+
+      <div className="h-80"></div>
     </main>
   );
 };

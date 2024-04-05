@@ -5,10 +5,12 @@ export default {
     extend: {
       colors: {
         // black: "#F7F7F7",
-        purple: "5B6ADD",
+        purple: "#8666db",
         grey: "#f9fafc",
         chalk: "#c1cacf",
       },
+
+      backgroundColor: {},
     },
   },
   plugins: [],
