@@ -4,10 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        // black: "#F7F7F7",
+        black: "#252526",
         purple: "#8666db",
         grey: "#f9fafc",
         chalk: "#c1cacf",
+        greyishblack: "#434344",
       },
 
       backgroundColor: {},
