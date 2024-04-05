@@ -1,5 +1,13 @@
+import { Hero, LandingNavigationBar } from "@/components";
+
 const LandingPage = () => {
-  return <div></div>;
+  return (
+    <main>
+      <LandingNavigationBar />
+
+      <Hero />
+    </main>
+  );
 };
 
 export default LandingPage;
