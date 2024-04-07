@@ -4,24 +4,26 @@ import { Link } from "react-router-dom";
 
 const FreelancersBox = () => {
   return (
-    <div>
-      <div className="flex flex-col gap-3">
-        <Link to="" className="flex items-center gap-1">
-          <h6 className="text-blue"> Payoneer account</h6>
+    <div className="flex flex-col gap-10">
+      <Link to="">
+        <div className="flex flex-col gap-3 px-4">
+          <span className="flex items-center gap-1">
+            <h6 className="text-blue font-bold"> BowalPay account</h6>
 
-          <MdKeyboardArrowRight color="#1698f4" />
-        </Link>
+            <MdKeyboardArrowRight color="#1698f4" />
+          </span>
 
-        <h6 className="text-black ">
-          Helping freelancers get paid globally and grow their business.
-        </h6>
-      </div>
+          <h6 className="text-black ">
+            Helping freelancers get paid globally and grow their business.
+          </h6>
+        </div>
+      </Link>
 
       <div className="flex">
         <div className="w-[70%] flex justify-between">
           <div className="flex flex-col gap-10">
-            <article className="flex flex-col gap-5">
-              <h6 className="text-blue">Get paid</h6>
+            <article className="flex flex-col gap-3">
+              <h6 className="text-blue mx-4 font-bold">Get paid</h6>
 
               <LinkGroup
                 heading="Get paid by clients"
@@ -42,8 +44,8 @@ const FreelancersBox = () => {
               />
             </article>
 
-            <article className="flex flex-col gap-5">
-              <h6 className="text-blue">Make payments</h6>
+            <article className="flex flex-col gap-3">
+              <h6 className="text-blue mx-4 font-bold">Make payments</h6>
 
               <LinkGroup
                 heading="Pay your suppliers"
@@ -66,8 +68,8 @@ const FreelancersBox = () => {
           </div>
 
           <div className="flex flex-col gap-10">
-            <article className="flex flex-col gap-5">
-              <h6 className="text-blue">Manage business</h6>
+            <article className="flex flex-col gap-3">
+              <h6 className="text-blue mx-4 font-bold">Manage business</h6>
 
               <LinkGroup
                 heading="Capital advance"
@@ -93,6 +95,8 @@ const FreelancersBox = () => {
                 heading="Explore all freelance services"
                 subheading="Grow your freelance business"
                 href=""
+                headingExtraClasses="text-blue font-bold"
+                cardExtraClasses="bg-grey"
               />
             </article>
           </div>
