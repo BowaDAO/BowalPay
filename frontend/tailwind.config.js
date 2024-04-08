@@ -10,6 +10,7 @@ export default {
         chalk: "#c1cacf",
         greyishblack: "#434344",
         blue: "#1698f4",
+        pink: "#fae5e5",
       },
 
       backgroundColor: {},

@@ -5,6 +5,7 @@ import {
   FreelancersBox,
   BusinessBox,
   MarketplaceBox,
+  Logo,
 } from "@/components";
 import { HiOutlineArrowSmRight } from "react-icons/hi";
 import { Link } from "react-router-dom";
@@ -16,11 +17,9 @@ const LandingNavigationBar = () => {
   const [showMarketplaceDropdown, setShowMarketplaceDropdown] = useState(false);
 
   return (
-    <div className="relative">
-      <nav className="lg:px-[8%] py-5 flex items-center justify-between shadow-md">
-        <Link to="/" className="text-xl font-bold tracking-wide">
-          BowalPay
-        </Link>
+    <div className=" bg-white w-full z-[100] sticky top-0 left-0">
+      <nav className="lg:px-[8%] py-5 flex items-center justify-between shadow-sm">
+        <Logo />
 
         <span className="flex items-center gap-6">
           <ul className="flex items-center gap-6">
@@ -61,15 +60,15 @@ const LandingNavigationBar = () => {
           <span className="flex items-center gap-6">
             <Link
               to=""
-              className="text-base font-medium tracking-wide hover:text-purple"
+              className="text-base font-medium tracking-wide hover:text-blue"
             >
               Sign In
             </Link>
 
             <StyledLink
               label="Register"
-              href="/"
-              extraButtonClasses="rounded-full py-2 px-6 bg-purple hover:opacity-[96%]"
+              href="/accounts"
+              extraButtonClasses="rounded-full py-2 px-6 button-background hover:opacity-[96%]"
               extraLabelClasses="text-white"
               iconRight={<HiOutlineArrowSmRight color="#FFFFFF" />}
             />

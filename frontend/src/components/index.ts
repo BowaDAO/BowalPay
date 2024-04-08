@@ -9,6 +9,9 @@ import FreelancersBox from "./boxes/freelancers-box";
 import BusinessBox from "./boxes/business-box";
 import MarketplaceBox from "./boxes/marketplace-box";
 import LinkGroup from "./links/link-group";
+import Logo from "./logo";
+import AccountSetupNavigationBar from "./navigation-bars/account-setup-navigation-bar";
+import AccountTypeBox from "./boxes/account-type-box";
 
 export {
   Routing,
@@ -22,4 +25,7 @@ export {
   BusinessBox,
   MarketplaceBox,
   LinkGroup,
+  Logo,
+  AccountSetupNavigationBar,
+  AccountTypeBox,
 };

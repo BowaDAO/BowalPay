@@ -1,4 +1,5 @@
 import { Hero, LandingBlack, LandingNavigationBar } from "@/components";
+import { WhyBowalPay } from "@/containers";
 
 const LandingPage = () => {
   return (
@@ -7,7 +8,7 @@ const LandingPage = () => {
       <LandingNavigationBar />
       <Hero />
 
-      <div className="h-80"></div>
+      <WhyBowalPay />
     </main>
   );
 };

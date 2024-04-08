@@ -1,10 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import { LandingPage } from "@/pages";
+import { Accounts, LandingPage } from "@/pages";
 
 const Routing = () => {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
+      <Route path="/accounts" element={<Accounts />} />
     </Routes>
   );
 };

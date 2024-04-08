@@ -2,8 +2,8 @@ import { StyledLink } from "..";
 
 const Hero = () => {
   return (
-    <header className="grid place-items-center py-20 bg-grey">
-      <article className="flex flex-col items-center justify-center text-center gap-12 max-w-[45%]">
+    <header className="grid place-items-center py-20 hero-background">
+      <article className="flex flex-col items-center justify-center text-center gap-12 max-w-[55%]">
         <h1 className="font-semibold text-5xl leading-[1.3] tracking-wide">
           Business payments for today's global economy
         </h1>
@@ -17,7 +17,7 @@ const Hero = () => {
           href=""
           label="Open your account"
           extraLabelClasses="text-white"
-          extraButtonClasses="rounded-full py-3 px-12 bg-purple hover:opacity-[96%]"
+          extraButtonClasses="rounded-full py-3 px-12 button-background hover:opacity-[96%]"
         />
       </article>
     </header>
