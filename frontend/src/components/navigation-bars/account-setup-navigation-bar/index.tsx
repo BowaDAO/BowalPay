@@ -7,7 +7,7 @@ const AccountSetupNavigationBar = () => {
       <Logo />
 
       <Link
-        to=""
+        to="login"
         className="text-base font-medium tracking-wide hover:text-blue"
       >
         Sign In
