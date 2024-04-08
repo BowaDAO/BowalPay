@@ -1,5 +1,11 @@
+import { SignupForm } from "@/components";
+
 const Signup = () => {
-  return <div>Signup</div>;
+  return (
+    <main className="px-[10%] py-10">
+      <SignupForm />
+    </main>
+  );
 };
 
 export default Signup;
