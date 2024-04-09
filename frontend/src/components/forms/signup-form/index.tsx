@@ -1,4 +1,5 @@
 import { BusinessTypeRadio, Divider, TextField } from "@/components";
+import { registerFormValidationSchema } from "@/utilities/validations";
 import { Formik } from "formik";
 import { Form } from "react-router-dom";
 
@@ -7,12 +8,16 @@ const SignupForm = () => {
     <div className="flex flex-col gap-10">
       <h3 className="text-3xl text-blue font-normal">BowalPay Sign Up</h3>
 
-      <Formik initialValues={{ name: "" }} onSubmit={() => {}}>
+      <Formik
+        initialValues={{ name: "" }}
+        onSubmit={() => {}}
+        validationSchema={registerFormValidationSchema}
+      >
         <Form className="w-1/2 flex flex-col gap-6">
-          <div className="flex flex-col gap-5">
-            <h6 className="text-sm">Select your type of business</h6>
+          <div className="flex flex-col gap-4">
+            <h6 className="text-sm text-black">Select your type of business</h6>
 
-            <span className="flex flex-col gap-3">
+            <span className="flex flex-col gap-2">
               <BusinessTypeRadio
                 heading="Individual"
                 subheading="My business isn't registered"
@@ -31,11 +36,11 @@ const SignupForm = () => {
           <Divider />
 
           <div className="flex flex-col gap-5">
-            <h6 className="text-sm">
+            <h6 className="text-sm text-black">
               Please fill in the fields in English characters only
             </h6>
 
-            <span className="flex flex-col gap-5">
+            <span className="flex flex-col gap-6">
               <TextField
                 name="firstName"
                 id="firstName"
@@ -58,8 +63,8 @@ const SignupForm = () => {
               />
 
               <TextField
-                name="email"
-                id="email"
+                name="confirmEmail"
+                id="confirmEmail"
                 type="email"
                 placeholder="Re-enter email address"
               />
@@ -70,6 +75,20 @@ const SignupForm = () => {
                 type="date"
                 placeholder="Date of birth"
               />
+
+              <TextField
+                name="password"
+                id="password"
+                type="password"
+                placeholder="Enter your password"
+              />
+
+              <TextField
+                name="confirmPassword"
+                id="confirmPassword"
+                type="password"
+                placeholder="Confirm your password"
+              />
             </span>
           </div>
 
@@ -79,6 +98,13 @@ const SignupForm = () => {
             <span className="text-blue underline">Privacy & Policy</span>, and
             agree to itd terms.{" "}
           </p>
+
+          <button
+            type="submit"
+            className="py-4 px-12 rounded-lg self-start button-background text-xl font-semibold text-white"
+          >
+            Sign Up
+          </button>
         </Form>
       </Formik>
     </div>

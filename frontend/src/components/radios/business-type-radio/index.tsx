@@ -20,7 +20,7 @@ const BusinessTypeRadio = (props: Props) => {
 
       <article>
         <h3 className="text-xl font-semibold text-black"> {props.heading} </h3>
-        <h4 className="text-sm">{props.subheading} </h4>
+        <h4 className="text-sm text-black">{props.subheading} </h4>
       </article>
     </div>
   );
