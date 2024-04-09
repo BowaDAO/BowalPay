@@ -23,7 +23,7 @@ const TextField = (props: Props) => {
           return (
             <input
               {...field}
-              className="border-chalk border-[1px] rounded-lg w-full p-4 text-sm lg:text-base"
+              className="border-chalk border-[1px] rounded-lg w-full px-4 py-3 text-sm lg:text-base"
               type={props.type}
               placeholder={props.placeholder}
               autoComplete={props.autoComplete}

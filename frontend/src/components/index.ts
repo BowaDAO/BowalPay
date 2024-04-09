@@ -17,6 +17,7 @@ import BusinessTypeRadio from "./radios/business-type-radio";
 import { router } from "./router";
 import Divider from "./divider";
 import TextField from "./text-field";
+import QuestionMarkTooltip from "./tooltips/question-mark-tooltip";
 
 export {
   LandingNavigationBar,
@@ -38,4 +39,5 @@ export {
   router,
   Divider,
   TextField,
+  QuestionMarkTooltip,
 };
