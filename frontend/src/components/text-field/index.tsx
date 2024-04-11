@@ -1,4 +1,5 @@
 import { Field, ErrorMessage, FieldProps } from "formik";
+import { Fragment } from "react/jsx-runtime";
 
 type Props = {
   name: string;
@@ -6,35 +7,47 @@ type Props = {
   type: "email" | "password" | "text" | "number" | "date";
   placeholder?: string;
   disabled?: boolean;
-  autoComplete?: string;
+  autoComplete?: "on" | "off";
   passwordField?: boolean;
   passwordVisible?: boolean;
   togglePasswordVisibilityIcon?: () => void;
   maxLength?: number;
+  extraClasses?: string;
+  labelVisible?: boolean;
 };
 
 const TextField = (props: Props) => {
   return (
     <div className="relative w-full">
-      <label htmlFor={props.name}></label>
-
       <Field name={props.name} id={props.id}>
         {({ field }: FieldProps) => {
           return (
-            <input
-              {...field}
-              className="border-chalk border-[1px] rounded-lg w-full px-4 py-3 text-sm lg:text-base"
-              type={props.type}
-              placeholder={props.placeholder}
-              autoComplete={props.autoComplete}
-              disabled={props.disabled}
-              maxLength={props.maxLength}
-            />
+            <span className="relative">
+              <label
+                htmlFor={props.name}
+                className={`${
+                  props.labelVisible ? "visible" : "invisible"
+                } absolute text-chalk bg-white px-1 left-2`}
+                style={{ transform: "translateY(-60%)" }}
+              >
+                {props.placeholder}
+              </label>
+
+              <input
+                {...field}
+                className={`${props.extraClasses} border-chalk border-[1px] rounded-lg w-full px-4 py-3 text-sm lg:text-base`}
+                type={props.type}
+                placeholder={props.placeholder}
+                autoComplete={props.autoComplete}
+                disabled={props.disabled}
+                maxLength={props.maxLength}
+              />
+            </span>
           );
         }}
       </Field>
 
-      <>
+      <Fragment>
         {props.passwordField && (
           <button
             type="button"
@@ -43,7 +56,7 @@ const TextField = (props: Props) => {
             className="absolute right-4 top-4"
           ></button>
         )}
-      </>
+      </Fragment>
 
       <ErrorMessage
         name={props.name}

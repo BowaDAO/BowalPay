@@ -5,13 +5,14 @@ type Props = {
   name: string;
   heading: string;
   subheading: string;
+  id: string;
 };
 
 const BusinessTypeRadio = (props: Props) => {
   return (
     <div className="flex gap-2 items-start">
       <div className="mt-1">
-        <Field name={props.name}>
+        <Field name={props.name} id={props.id}>
           {({ field }: FieldProps) => {
             return <input type="radio" {...field} value={props.value} />;
           }}
