@@ -14,7 +14,6 @@ import AccountTypeBox from "./boxes/account-type-box";
 import LoginForm from "./forms/login-form";
 import SignupForm from "./forms/signup-form";
 import BusinessTypeRadio from "./radios/business-type-radio";
-import { router } from "./router";
 import Divider from "./divider";
 import TextField from "./text-field";
 import QuestionMarkTooltip from "./tooltips/question-mark-tooltip";
@@ -36,7 +35,6 @@ export {
   LoginForm,
   SignupForm,
   BusinessTypeRadio,
-  router,
   Divider,
   TextField,
   QuestionMarkTooltip,
