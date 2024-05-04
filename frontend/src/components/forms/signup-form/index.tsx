@@ -9,7 +9,7 @@ const initialFormValues = {
   lastName: "",
   email: "",
   confirmEmail: "",
-  businessType: "",
+  accountType: "",
   dateOfBirth: "",
   password: "",
   confirmPassword: "",
@@ -37,16 +37,16 @@ const SignupForm = () => {
                   <BusinessTypeRadio
                     heading="Individual"
                     subheading="My business isn't registered"
-                    name="businessType"
+                    name="accountType"
                     value="individual"
-                    id="businessType"
+                    id="accountType"
                   />
                   <BusinessTypeRadio
                     heading="Company"
                     subheading="Includes sole proprietorship, corporation, LLC"
-                    name="businessType"
+                    name="accountType"
                     value="company"
-                    id="businessType"
+                    id="accountType"
                   />
 
                   <ErrorMessage

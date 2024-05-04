@@ -15,7 +15,7 @@ export const registerFormValidationSchema = Yup.object({
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password")], "Password does not match.")
     .required("The confirm password field is required."),
-  businessType: Yup.string().required("Select your business type."),
+  accountType: Yup.string().required("Select your business type."),
   dateOfBirth: Yup.date().required("Date of birth is required."),
 });
 
