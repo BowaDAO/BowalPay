@@ -16,7 +16,6 @@ import SignupForm from "./forms/signup-form";
 import BusinessTypeRadio from "./radios/business-type-radio";
 import Divider from "./divider";
 import TextField from "./text-field";
-import QuestionMarkTooltip from "./tooltips/question-mark-tooltip";
 
 export {
   LandingNavigationBar,
@@ -37,5 +36,4 @@ export {
   BusinessTypeRadio,
   Divider,
   TextField,
-  QuestionMarkTooltip,
 };

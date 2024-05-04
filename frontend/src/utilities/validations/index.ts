@@ -18,3 +18,8 @@ export const registerFormValidationSchema = Yup.object({
   businessType: Yup.string().required("Select your business type."),
   dateOfBirth: Yup.date().required("Date of birth is required."),
 });
+
+export const loginFormValidationSchema = Yup.object({
+  email: Yup.string().required("Email or username is required"),
+  password: Yup.string().required("Password is required"),
+});

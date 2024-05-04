@@ -1,9 +1,6 @@
-import {
-  BusinessTypeRadio,
-  Divider,
-  QuestionMarkTooltip,
-  TextField,
-} from "@/components";
+import { BusinessTypeRadio, Divider, TextField } from "@/components";
+import { QuestionMarkTooltip } from "@/components/tooltips";
+import { AuthButton } from "@/components/buttons";
 import { registerFormValidationSchema } from "@/utilities/validations";
 import { Formik, Form, ErrorMessage } from "formik";
 
@@ -171,12 +168,7 @@ const SignupForm = () => {
                 and agree to itd terms.{" "}
               </p>
 
-              <button
-                type="submit"
-                className="py-4 px-12 rounded-lg self-start button-background text-xl font-semibold text-white"
-              >
-                Sign Up
-              </button>
+              <AuthButton label="Sign Up" onClick={() => {}} />
             </Form>
           );
         }}

@@ -49,10 +49,18 @@ body {
 
 /* Tailwind */
 
+.flex_col {
+  @apply flex flex-col;
+}
+
 .flex_col_center {
-  @apply flex flex-col items-center;
+  @apply flex_col items-center;
 }
 
 .flex_col_justify_center {
   @apply flex_col_center justify-center;
+}
+
+.flex_col_justify_between {
+  @apply flex_col_center justify-between;
 }
