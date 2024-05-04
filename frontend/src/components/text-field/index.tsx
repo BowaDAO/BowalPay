@@ -18,7 +18,7 @@ type Props = {
 
 const TextField = (props: Props) => {
   return (
-    <div className="relative w-full">
+    <div className={`relative ${props.extraClasses}`}>
       <Field name={props.name} id={props.id}>
         {({ field }: FieldProps) => {
           return (
@@ -35,7 +35,7 @@ const TextField = (props: Props) => {
 
               <input
                 {...field}
-                className={`${props.extraClasses} border-chalk border-[1px] rounded-lg w-full px-4 py-3 text-sm lg:text-base`}
+                className=" border-chalk border-[1px] rounded-lg w-full px-4 py-3 text-sm lg:text-base"
                 type={props.type}
                 placeholder={props.placeholder}
                 autoComplete={props.autoComplete}

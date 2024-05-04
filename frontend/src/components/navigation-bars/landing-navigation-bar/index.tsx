@@ -59,7 +59,7 @@ const LandingNavigationBar = () => {
 
           <span className="flex items-center gap-6">
             <Link
-              to=""
+              to="/login"
               className="text-base font-medium tracking-wide hover:text-blue"
             >
               Sign In

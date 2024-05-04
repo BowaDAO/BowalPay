@@ -77,7 +77,6 @@ const SignupForm = () => {
                       placeholder="First name"
                       labelVisible={formik.values.firstName.length > 0}
                       extraClasses="w-[430px]"
-                      autoComplete="off"
                     />
 
                     <QuestionMarkTooltip
@@ -94,7 +93,6 @@ const SignupForm = () => {
                       placeholder="Last name"
                       labelVisible={formik.values.lastName.length > 0}
                       extraClasses="w-[430px]"
-                      autoComplete="off"
                     />
 
                     <QuestionMarkTooltip
@@ -111,7 +109,6 @@ const SignupForm = () => {
                       placeholder="Email address"
                       labelVisible={formik.values.email.length > 0}
                       extraClasses="w-[430px]"
-                      autoComplete="off"
                     />
 
                     <QuestionMarkTooltip
@@ -127,7 +124,6 @@ const SignupForm = () => {
                     placeholder="Re-enter email address"
                     labelVisible={formik.values.confirmEmail.length > 0}
                     extraClasses="w-[430px]"
-                    autoComplete="off"
                   />
 
                   <span className="flex items-center gap-2">
@@ -138,7 +134,6 @@ const SignupForm = () => {
                       placeholder="Date of birth"
                       labelVisible={formik.values.dateOfBirth.length > 0}
                       extraClasses="w-[430px]"
-                      autoComplete="off"
                     />
 
                     <QuestionMarkTooltip
