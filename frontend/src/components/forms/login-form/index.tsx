@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   return (
-    <main className="flex h-screen">
+    <div className="flex h-screen">
       <div className="flex_col_justify_between w-[35%] pt-12 pb-3 h-full shadow-lg">
         <div className="flex_col_center gap-16">
           <Logo />
@@ -82,7 +82,7 @@ const LoginForm = () => {
       </div>
 
       <div className="w-[65%]"></div>
-    </main>
+    </div>
   );
 };
 

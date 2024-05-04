@@ -1,12 +1,11 @@
-const express = require("express");
+import express from "express";
+import AuthRouter from "./routes/auth";
+
 const app = express();
-import { Request, Response } from "express";
 
-app.use("/", (req: Request, res: Response) => {
-  return res.json({ message: "Loading..." });
-});
+app.use("/api/v1/auth", AuthRouter);
 
-const port = 9000;
+const port = process.env.PORT || 9000;
 
 app.listen(port, () => {
   console.log(`app is listening in port-${port}`);
