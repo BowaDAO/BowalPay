@@ -4,6 +4,8 @@ dotenv.config();
 import AuthRouter from "./routes/auth";
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/v1/auth", AuthRouter);
 

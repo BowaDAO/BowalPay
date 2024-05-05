@@ -1,7 +1,7 @@
 const userExistsQuery =
-  "SELECT emailAddress from users WHERE emailAddress = $1";
+  "SELECT email_address from users WHERE email_address = $1";
 
 const createNewUserQuery =
-  "INSERT INTO users(firstName, lastName, emailAddress, password, dateOfBirth, accountType) VALUES($1, $2, $3, $4, $5, $6) RETURNING id firstName, lastName, emailAddress, password, dateOfBirth, accountType";
+  "INSERT INTO users(first_name, last_name, email_address, password, date_of_birth, account_type) VALUES($1, $2, $3, $4, $5, $6) RETURNING id first_name, last_name, email_address, password, date_of_birth, account_type";
 
 export { userExistsQuery, createNewUserQuery };
