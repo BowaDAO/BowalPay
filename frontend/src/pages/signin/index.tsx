@@ -2,16 +2,19 @@ import { LoginForm } from "@/components";
 import { FormikHelpers } from "formik";
 import axios, { AxiosError } from "axios";
 import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
 
 const initialFormValues: LoginFormType = {
-  email: "",
+  emailAddress: "",
   password: "",
 };
 
 const Signin = () => {
+  const navigate = useNavigate();
+
   const LoginRequestFunction = async (formValue: LoginFormType) => {
     const res = await axios.post(
-      "https://localhost:9000/api/v1/auth/login",
+      "http://localhost:9000/api/v1/auth/login",
       formValue,
       {
         headers: {
@@ -23,14 +26,16 @@ const Signin = () => {
     return res.data;
   };
 
-  const { data, error, isPending, mutateAsync } = useMutation<
+  const { data, error, isPending, isError, mutateAsync } = useMutation<
     LoginResponse,
     AxiosError<AuthErrorResponse>,
     LoginFormType
   >({
     mutationKey: ["login"],
     mutationFn: LoginRequestFunction,
-    onSuccess: () => {},
+    onSuccess: () => {
+      navigate("/home");
+    },
   });
 
   const login = async (
@@ -41,11 +46,17 @@ const Signin = () => {
     formikHelpers.resetForm();
   };
 
-  console.log(data, error, isPending);
+  console.log(data, error?.response?.data, isPending);
 
   return (
     <main>
-      <LoginForm initialFormValues={initialFormValues} login={login} />
+      <LoginForm
+        initialFormValues={initialFormValues}
+        login={login}
+        isError={isError}
+        isPending={isPending}
+        error={error}
+      />
     </main>
   );
 };

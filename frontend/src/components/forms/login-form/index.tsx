@@ -1,8 +1,10 @@
 import { AuthButton } from "@/components/buttons";
+import CustomError from "@/components/custom-error";
 import Logo from "@/components/logo";
 import TextField from "@/components/text-field";
 import { InfoTooltip } from "@/components/tooltips";
 import { loginFormValidationSchema } from "@/utilities/validations";
+import { AxiosError } from "axios";
 import { Form, Formik, FormikHelpers } from "formik";
 import { Link } from "react-router-dom";
 
@@ -11,7 +13,10 @@ type Props = {
   login: (
     values: LoginFormType,
     formikHelpers: FormikHelpers<LoginFormType>
-  ) => void;
+  ) => Promise<void>;
+  error: AxiosError<AuthErrorResponse> | null;
+  isPending: boolean;
+  isError: boolean;
 };
 
 const LoginForm = (props: Props) => {
@@ -31,11 +36,11 @@ const LoginForm = (props: Props) => {
               <Form className="flex_col gap-8">
                 <span className="flex items-center gap-2">
                   <TextField
-                    name="email"
-                    id="email"
+                    name="emailAddress"
+                    id="emailAddress"
                     type="email"
                     placeholder="Email or Username"
-                    labelVisible={formik.values.email.length > 0}
+                    labelVisible={formik.values.emailAddress.length > 0}
                     extraClasses="w-[360px]"
                     autoComplete="off"
                   />
@@ -69,15 +74,17 @@ const LoginForm = (props: Props) => {
                   <AuthButton
                     label="Sign In"
                     extraClasses="w-[360px]"
-                    onClick={() => {}}
+                    disabled={props.isPending}
                   />
+
                   <span className="font-semibold">
                     New to BowalPay?
                     <Link to="register" className="text-blue">
-                      {" "}
                       Sign Up!
                     </Link>
                   </span>
+
+                  <CustomError message={props.error?.response?.data.message} />
                 </span>
               </Form>
             )}

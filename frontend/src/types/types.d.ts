@@ -1,5 +1,5 @@
 type LoginFormType = {
-  email: string;
+  emailAddress: string;
   password: string;
 };
 

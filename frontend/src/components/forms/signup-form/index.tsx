@@ -7,7 +7,7 @@ import { Formik, Form, ErrorMessage } from "formik";
 const initialFormValues = {
   firstName: "",
   lastName: "",
-  email: "",
+  emailAddress: "",
   confirmEmail: "",
   accountType: "",
   dateOfBirth: "",
@@ -100,11 +100,11 @@ const SignupForm = () => {
 
                   <span className="flex items-center gap-2">
                     <TextField
-                      name="email"
-                      id="email"
+                      name="emailAddress"
+                      id="emailAddress"
                       type="email"
                       placeholder="Email address"
-                      labelVisible={formik.values.email.length > 0}
+                      labelVisible={formik.values.emailAddress.length > 0}
                       extraClasses="w-[430px]"
                     />
 
@@ -168,7 +168,7 @@ const SignupForm = () => {
                 and agree to itd terms.{" "}
               </p>
 
-              <AuthButton label="Sign Up" onClick={() => {}} />
+              <AuthButton label="Sign Up" />
             </Form>
           );
         }}

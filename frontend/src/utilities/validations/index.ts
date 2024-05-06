@@ -3,7 +3,7 @@ import * as Yup from "yup";
 export const registerFormValidationSchema = Yup.object({
   firstName: Yup.string().required("The first name field is required."),
   lastName: Yup.string().required("The last name field is required."),
-  email: Yup.string()
+  emailAddress: Yup.string()
     .required("The email field is required.")
     .email("That is not a valid email format."),
   confirmEmail: Yup.string()
@@ -20,6 +20,6 @@ export const registerFormValidationSchema = Yup.object({
 });
 
 export const loginFormValidationSchema = Yup.object({
-  email: Yup.string().required("Email or username is required"),
+  emailAddress: Yup.string().required("Email or username is required"),
   password: Yup.string().required("Password is required"),
 });
