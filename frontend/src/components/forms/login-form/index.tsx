@@ -3,10 +3,18 @@ import Logo from "@/components/logo";
 import TextField from "@/components/text-field";
 import { InfoTooltip } from "@/components/tooltips";
 import { loginFormValidationSchema } from "@/utilities/validations";
-import { Form, Formik } from "formik";
+import { Form, Formik, FormikHelpers } from "formik";
 import { Link } from "react-router-dom";
 
-const LoginForm = () => {
+type Props = {
+  initialFormValues: LoginFormType;
+  login: (
+    values: LoginFormType,
+    formikHelpers: FormikHelpers<LoginFormType>
+  ) => void;
+};
+
+const LoginForm = (props: Props) => {
   return (
     <div className="flex h-screen">
       <div className="flex_col_justify_between w-[35%] pt-12 pb-3 h-full shadow-lg">
@@ -14,8 +22,8 @@ const LoginForm = () => {
           <Logo />
 
           <Formik
-            initialValues={{ email: "", password: "" }}
-            onSubmit={() => {}}
+            initialValues={props.initialFormValues}
+            onSubmit={props.login}
             validationSchema={loginFormValidationSchema}
             validateOnBlur
           >

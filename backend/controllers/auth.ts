@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express";
+import { Request, Response } from "express";
 import {
   LoginFormSchema,
   RegisterFormSchema,
@@ -46,14 +46,19 @@ const register = async (req: Request, res: Response) => {
       expiresIn: process.env.JWT_TOKEN_EXPIRATION_TIME!,
     })
       .then((token) => {
-        res.json({ loggedIn: true, token });
+        res.json({
+          loggedIn: true,
+          token,
+        });
       })
       .catch((error: Error) => {
         res.json({ loggedIn: false, error });
       });
   } catch (error) {
     if (error instanceof ValidationError) {
-      return res.status(400).json({ message: error.errors[0] });
+      return res
+        .status(StatusCodes.BAD_REQUEST)
+        .json({ message: error.errors[0] });
     }
 
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
@@ -63,7 +68,7 @@ const register = async (req: Request, res: Response) => {
   }
 };
 
-const login = async (req: Request, res: Response, next: NextFunction) => {
+const login = async (req: Request, res: Response) => {
   const { emailAddress: email_address, password } = req.body;
 
   try {
@@ -99,7 +104,9 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
       });
   } catch (error) {
     if (error instanceof ValidationError) {
-      return res.status(400).json({ message: error.errors[0] });
+      return res
+        .status(StatusCodes.BAD_REQUEST)
+        .json({ loggedIn: false, message: error.errors[0] });
     }
 
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
@@ -109,4 +116,6 @@ const login = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export { register, login };
+const handleSession = async (req: Request, res: Response) => {};
+
+export { register, login, handleSession };
