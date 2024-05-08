@@ -1,28 +1,34 @@
-import { BusinessTypeRadio, Divider, TextField } from "@/components";
+import {
+  BusinessTypeRadio,
+  CustomError,
+  Divider,
+  TextField,
+} from "@/components";
 import { QuestionMarkTooltip } from "@/components/tooltips";
 import { AuthButton } from "@/components/buttons";
 import { registerFormValidationSchema } from "@/utilities/validations";
-import { Formik, Form, ErrorMessage } from "formik";
+import { Formik, Form, ErrorMessage, FormikHelpers } from "formik";
+import { AxiosError } from "axios";
 
-const initialFormValues = {
-  firstName: "",
-  lastName: "",
-  emailAddress: "",
-  confirmEmail: "",
-  accountType: "",
-  dateOfBirth: "",
-  password: "",
-  confirmPassword: "",
+type Props = {
+  initialFormValues: RegisterFormType;
+  signup: (
+    values: RegisterFormType,
+    formikHelpers: FormikHelpers<RegisterFormType>
+  ) => Promise<void>;
+  error: AxiosError<AuthErrorResponse> | null;
+  isPending: boolean;
+  isError: boolean;
 };
 
-const SignupForm = () => {
+const SignupForm = (props: Props) => {
   return (
     <div className="flex flex-col gap-10">
       <h3 className="text-3xl text-blue font-normal">BowalPay Sign Up</h3>
 
       <Formik
-        initialValues={initialFormValues}
-        onSubmit={() => {}}
+        initialValues={props.initialFormValues}
+        onSubmit={props.signup}
         validationSchema={registerFormValidationSchema}
       >
         {(formik) => {
@@ -129,7 +135,7 @@ const SignupForm = () => {
                       id="dateOfBirth"
                       type="date"
                       placeholder="Date of birth"
-                      labelVisible={formik.values.dateOfBirth.length > 0}
+                      labelVisible={Boolean(formik.values.dateOfBirth)}
                       extraClasses="w-[430px]"
                     />
 
@@ -169,6 +175,9 @@ const SignupForm = () => {
               </p>
 
               <AuthButton label="Sign Up" />
+
+              <CustomError message={props.error?.response?.data.message} />
+              {props.isPending && <p>Loading...</p>}
             </Form>
           );
         }}

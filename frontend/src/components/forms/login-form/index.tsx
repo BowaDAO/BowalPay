@@ -79,7 +79,7 @@ const LoginForm = (props: Props) => {
 
                   <span className="font-semibold">
                     New to BowalPay?{" "}
-                    <Link to="register" className="text-blue">
+                    <Link to="/register" className="text-blue">
                       Sign Up!
                     </Link>
                   </span>

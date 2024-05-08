@@ -7,7 +7,7 @@ export const registerFormValidationSchema = Yup.object({
     .required("The email field is required.")
     .email("That is not a valid email format."),
   confirmEmail: Yup.string()
-    .oneOf([Yup.ref("email")], "Email does not match.")
+    .oneOf([Yup.ref("emailAddress")], "Email does not match.")
     .required("The email field is required."),
   password: Yup.string()
     .required("The password field is required.")
