@@ -5,7 +5,7 @@ type Props = {
 
 const CustomError = (props: Props) => {
   return (
-    <div className={`text-red-600 font-medium text-sm ${props.extraClasses}`}>
+    <div className={`text-red-600 font-medium text-base ${props.extraClasses}`}>
       {props.message}
     </div>
   );

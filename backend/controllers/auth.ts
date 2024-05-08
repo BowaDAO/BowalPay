@@ -79,7 +79,7 @@ const login = async (req: Request, res: Response) => {
     if (userExists.rowCount === 0) {
       return res
         .status(StatusCodes.NOT_FOUND)
-        .json({ loggedIn: false, message: "user does not exist" });
+        .json({ loggedIn: false, message: "User does not exist" });
     }
 
     const passwordIsCorrect = await bcrypt.compare(

@@ -26,7 +26,7 @@ const Signin = () => {
     return res.data;
   };
 
-  const { data, error, isPending, isError, mutateAsync } = useMutation<
+  const { error, isPending, isError, mutateAsync } = useMutation<
     LoginResponse,
     AxiosError<AuthErrorResponse>,
     LoginFormType
@@ -45,8 +45,6 @@ const Signin = () => {
     await mutateAsync(values);
     formikHelpers.resetForm();
   };
-
-  console.log(data, error?.response?.data, isPending);
 
   return (
     <main>

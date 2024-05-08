@@ -78,13 +78,14 @@ const LoginForm = (props: Props) => {
                   />
 
                   <span className="font-semibold">
-                    New to BowalPay?
+                    New to BowalPay?{" "}
                     <Link to="register" className="text-blue">
                       Sign Up!
                     </Link>
                   </span>
 
                   <CustomError message={props.error?.response?.data.message} />
+                  {props.isPending && <p>Loading...</p>}
                 </span>
               </Form>
             )}
