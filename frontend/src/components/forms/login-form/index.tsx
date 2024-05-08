@@ -47,7 +47,7 @@ const LoginForm = (props: Props) => {
 
                   <InfoTooltip
                     id="email-anchor"
-                    content="In most cases, this is the email address associated with your Payoneer account"
+                    content="In most cases, this is the email address associated with your BowalPay account"
                   />
                 </span>
 
@@ -79,7 +79,7 @@ const LoginForm = (props: Props) => {
 
                   <span className="font-semibold">
                     New to BowalPay?{" "}
-                    <Link to="/register" className="text-blue">
+                    <Link to="/accounts" className="text-blue">
                       Sign Up!
                     </Link>
                   </span>

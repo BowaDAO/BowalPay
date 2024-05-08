@@ -9,6 +9,7 @@ import { AuthButton } from "@/components/buttons";
 import { registerFormValidationSchema } from "@/utilities/validations";
 import { Formik, Form, ErrorMessage, FormikHelpers } from "formik";
 import { AxiosError } from "axios";
+import { Link } from "react-router-dom";
 
 type Props = {
   initialFormValues: RegisterFormType;
@@ -23,8 +24,17 @@ type Props = {
 
 const SignupForm = (props: Props) => {
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-10 relative">
       <h3 className="text-3xl text-blue font-normal">BowalPay Sign Up</h3>
+
+      <div className="absolute top-4 right-0">
+        <span className="text-2xl font-extrabold italic tracking-wide">
+          <h1> Already have an account? </h1>{" "}
+          <Link to="/login" className="text-blue underline">
+            Login
+          </Link>
+        </span>
+      </div>
 
       <Formik
         initialValues={props.initialFormValues}
