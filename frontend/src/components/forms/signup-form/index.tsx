@@ -187,7 +187,6 @@ const SignupForm = (props: Props) => {
               <AuthButton label="Sign Up" />
 
               <CustomError message={props.error?.response?.data.message} />
-              {props.isPending && <p>Loading...</p>}
             </Form>
           );
         }}

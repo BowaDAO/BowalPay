@@ -72,7 +72,7 @@ const LoginForm = (props: Props) => {
 
                 <span className="flex_col_center gap-2">
                   <AuthButton
-                    label="Sign In"
+                    label={props.isPending ? "Signing In..." : "Sign In"}
                     extraClasses="w-[360px]"
                     disabled={props.isPending}
                   />
@@ -85,7 +85,6 @@ const LoginForm = (props: Props) => {
                   </span>
 
                   <CustomError message={props.error?.response?.data.message} />
-                  {props.isPending && <p>Loading...</p>}
                 </span>
               </Form>
             )}
