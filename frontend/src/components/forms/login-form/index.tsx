@@ -34,7 +34,7 @@ const LoginForm = (props: Props) => {
           >
             {(formik) => (
               <Form className="flex_col gap-8">
-                <span className="flex items-center gap-2">
+                <span className="flex items-center gap-2 relative">
                   <TextField
                     name="emailAddress"
                     id="emailAddress"
@@ -45,10 +45,12 @@ const LoginForm = (props: Props) => {
                     autoComplete="off"
                   />
 
-                  <InfoTooltip
-                    id="email-anchor"
-                    content="In most cases, this is the email address associated with your BowalPay account"
-                  />
+                  <span className="absolute right-2 top-4">
+                    <InfoTooltip
+                      id="email-anchor"
+                      content="In most cases, this is the email address associated with your BowalPay account"
+                    />
+                  </span>
                 </span>
 
                 <span className="flex_col gap-2">
