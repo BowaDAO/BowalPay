@@ -1,5 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Accounts, Home, LandingPage, NotFound, Signin, Signup } from "@/pages";
+import {
+  Accounts,
+  ForgotPassword,
+  Home,
+  LandingPage,
+  NotFound,
+  ResetPassword,
+  Signin,
+  Signup,
+} from "@/pages";
 import { RegisterLayout } from "@/layouts";
 
 export const router = createBrowserRouter([
@@ -26,6 +35,16 @@ export const router = createBrowserRouter([
   {
     path: "login",
     element: <Signin />,
+  },
+
+  {
+    path: "forgot-password",
+    element: <ForgotPassword />,
+  },
+
+  {
+    path: "reset-password",
+    element: <ResetPassword />,
   },
 
   {

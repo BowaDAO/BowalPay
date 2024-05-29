@@ -2,14 +2,16 @@ import {
   BusinessTypeRadio,
   CustomError,
   Divider,
-  TextField,
+  PrivacyPolicyCheck,
 } from "@/components";
+import { TextField, PasswordField } from "@/components/fields";
 import { QuestionMarkTooltip } from "@/components/tooltips";
 import { AuthButton } from "@/components/buttons";
 import { registerFormValidationSchema } from "@/utilities/validations";
 import { Formik, Form, ErrorMessage, FormikHelpers } from "formik";
 import { AxiosError } from "axios";
 import { Link } from "react-router-dom";
+import { SIGNUP_FORM } from "@/constants/data";
 
 type Props = {
   initialFormValues: RegisterFormType;
@@ -29,9 +31,9 @@ const SignupForm = (props: Props) => {
 
       <div className="absolute top-4 right-0">
         <span className="text-2xl font-extrabold italic tracking-wide">
-          <h1> Already have an account? </h1>{" "}
-          <Link to="/login" className="text-blue underline">
-            Login
+          <h1> {SIGNUP_FORM.old_user.label} </h1>{" "}
+          <Link to={SIGNUP_FORM.old_user.to} className="text-blue underline">
+            {SIGNUP_FORM.old_user.link_label}
           </Link>
         </span>
       </div>
@@ -51,18 +53,19 @@ const SignupForm = (props: Props) => {
 
                 <div className=" relative flex flex-col gap-3">
                   <BusinessTypeRadio
-                    heading="Individual"
-                    subheading="My business isn't registered"
-                    name="accountType"
-                    value="individual"
-                    id="accountType"
+                    heading={SIGNUP_FORM.individual_account.heading}
+                    subheading={SIGNUP_FORM.individual_account.subheading}
+                    name={SIGNUP_FORM.individual_account.name}
+                    value={SIGNUP_FORM.individual_account.value}
+                    id={SIGNUP_FORM.individual_account.id}
                   />
+
                   <BusinessTypeRadio
-                    heading="Company"
-                    subheading="Includes sole proprietorship, corporation, LLC"
-                    name="accountType"
-                    value="company"
-                    id="accountType"
+                    heading={SIGNUP_FORM.company_account.heading}
+                    subheading={SIGNUP_FORM.company_account.subheading}
+                    name={SIGNUP_FORM.company_account.name}
+                    value={SIGNUP_FORM.company_account.value}
+                    id={SIGNUP_FORM.company_account.id}
                   />
 
                   <ErrorMessage
@@ -84,105 +87,96 @@ const SignupForm = (props: Props) => {
                 <span className="flex flex-col gap-8">
                   <span className="flex items-center gap-2">
                     <TextField
-                      name="firstName"
-                      id="firstName"
+                      name={SIGNUP_FORM.firstname.name}
+                      id={SIGNUP_FORM.firstname.id}
                       type="text"
-                      placeholder="First name"
+                      placeholder={SIGNUP_FORM.firstname.placeholder}
                       labelVisible={formik.values.firstName.length > 0}
                       extraClasses="w-[430px]"
                     />
 
                     <QuestionMarkTooltip
-                      id="first-name-anchor"
-                      content="First name used in your government-issued ID, written in English characters. In case your name do contains digits, type digits in words."
+                      id={SIGNUP_FORM.firstname.tooltip_id}
+                      content={SIGNUP_FORM.firstname.tooltip_content}
                     />
                   </span>
 
                   <span className="flex items-center gap-2">
                     <TextField
-                      name="lastName"
-                      id="lastName"
+                      name={SIGNUP_FORM.lastname.name}
+                      id={SIGNUP_FORM.lastname.id}
                       type="text"
-                      placeholder="Last name"
+                      placeholder={SIGNUP_FORM.lastname.placeholder}
                       labelVisible={formik.values.lastName.length > 0}
                       extraClasses="w-[430px]"
                     />
 
                     <QuestionMarkTooltip
-                      id="last-name-anchor"
-                      content="Last name used in your government-issued ID, written in English characters. In case your name do contains digits, type digits in words."
+                      id={SIGNUP_FORM.lastname.tooltip_id}
+                      content={SIGNUP_FORM.lastname.tooltip_content}
                     />
                   </span>
 
                   <span className="flex items-center gap-2">
                     <TextField
-                      name="emailAddress"
-                      id="emailAddress"
+                      name={SIGNUP_FORM.email.name}
+                      id={SIGNUP_FORM.email.id}
                       type="email"
-                      placeholder="Email address"
+                      placeholder={SIGNUP_FORM.email.placeholder}
                       labelVisible={formik.values.emailAddress.length > 0}
                       extraClasses="w-[430px]"
                     />
 
                     <QuestionMarkTooltip
-                      id="email-anchor"
-                      content="This email address will be used to access your account and send you communications."
+                      id={SIGNUP_FORM.email.tooltip_id}
+                      content={SIGNUP_FORM.email.tooltip_content}
                     />
                   </span>
 
                   <TextField
-                    name="confirmEmail"
-                    id="confirmEmail"
+                    name={SIGNUP_FORM.confirm_email.name}
+                    id={SIGNUP_FORM.confirm_email.id}
                     type="email"
-                    placeholder="Re-enter email address"
+                    placeholder={SIGNUP_FORM.confirm_email.placeholder}
                     labelVisible={formik.values.confirmEmail.length > 0}
                     extraClasses="w-[430px]"
                   />
 
                   <span className="flex items-center gap-2">
                     <TextField
-                      name="dateOfBirth"
-                      id="dateOfBirth"
+                      name={SIGNUP_FORM.dob.name}
+                      id={SIGNUP_FORM.dob.id}
                       type="date"
-                      placeholder="Date of birth"
+                      placeholder={SIGNUP_FORM.dob.placeholder}
                       labelVisible={Boolean(formik.values.dateOfBirth)}
                       extraClasses="w-[430px]"
                     />
 
                     <QuestionMarkTooltip
-                      id="date-of-birth-anchor"
-                      content="Date of birth as listed on your government-issued ID. You must be over 18 years old to apply."
+                      id={SIGNUP_FORM.dob.tooltip_id}
+                      content={SIGNUP_FORM.dob.tooltip_content}
                     />
                   </span>
 
-                  <TextField
-                    name="password"
-                    id="password"
-                    type="password"
-                    placeholder="Enter your password"
+                  <PasswordField
+                    name={SIGNUP_FORM.password.name}
+                    id={SIGNUP_FORM.password.id}
+                    placeholder={SIGNUP_FORM.password.placeholder}
                     labelVisible={formik.values.password.length > 0}
                     extraClasses="w-[430px]"
-                    autoComplete="off"
                   />
 
-                  <TextField
-                    name="confirmPassword"
-                    id="confirmPassword"
-                    type="password"
-                    placeholder="Confirm your password"
+                  <PasswordField
+                    name={SIGNUP_FORM.confirm_password.name}
+                    id={SIGNUP_FORM.confirm_password.id}
+                    placeholder={SIGNUP_FORM.confirm_password.placeholder}
                     labelVisible={formik.values.confirmPassword.length > 0}
                     extraClasses="w-[430px]"
-                    autoComplete="off"
                   />
                 </span>
               </div>
 
-              <p className="text-sm text-chalk font-normal">
-                By clicking "Sign Up", you confirm that you have read and
-                understood the payoneer{" "}
-                <span className="text-blue underline">Privacy & Policy</span>,
-                and agree to itd terms.{" "}
-              </p>
+              <PrivacyPolicyCheck />
 
               <AuthButton label="Sign Up" />
 

@@ -1,12 +1,13 @@
 import { AuthButton } from "@/components/buttons";
 import CustomError from "@/components/custom-error";
 import Logo from "@/components/logo";
-import TextField from "@/components/text-field";
+import { TextField, PasswordField } from "@/components/fields";
 import { InfoTooltip } from "@/components/tooltips";
 import { loginFormValidationSchema } from "@/utilities/validations";
 import { AxiosError } from "axios";
 import { Form, Formik, FormikHelpers } from "formik";
 import { Link } from "react-router-dom";
+import { LOGIN_FORM } from "@/constants/data";
 
 type Props = {
   initialFormValues: LoginFormType;
@@ -36,10 +37,10 @@ const LoginForm = (props: Props) => {
               <Form className="flex_col gap-8">
                 <span className="flex items-center gap-2 relative">
                   <TextField
-                    name="emailAddress"
-                    id="emailAddress"
+                    name={LOGIN_FORM.email.name}
+                    id={LOGIN_FORM.email.id}
                     type="email"
-                    placeholder="Email or Username"
+                    placeholder={LOGIN_FORM.email.placeholder}
                     labelVisible={formik.values.emailAddress.length > 0}
                     extraClasses="w-[360px]"
                     autoComplete="off"
@@ -47,28 +48,26 @@ const LoginForm = (props: Props) => {
 
                   <span className="absolute right-2 top-4">
                     <InfoTooltip
-                      id="email-anchor"
-                      content="In most cases, this is the email address associated with your BowalPay account"
+                      id={LOGIN_FORM.email.tooltip_id}
+                      content={LOGIN_FORM.email.tooltip_content}
                     />
                   </span>
                 </span>
 
                 <span className="flex_col gap-2">
-                  <TextField
-                    name="password"
-                    id="password"
-                    type="password"
-                    placeholder="Password"
+                  <PasswordField
                     labelVisible={formik.values.password.length > 0}
+                    name={LOGIN_FORM.password.name}
+                    id={LOGIN_FORM.password.id}
+                    placeholder={LOGIN_FORM.password.placeholder}
                     extraClasses="w-[360px]"
-                    autoComplete="off"
                   />
 
                   <Link
-                    to="forgot-password"
+                    to={LOGIN_FORM.forget_password.to}
                     className="text-blue font-semibold"
                   >
-                    Forgot password?
+                    {LOGIN_FORM.forget_password.link_label}
                   </Link>
                 </span>
 
@@ -80,9 +79,9 @@ const LoginForm = (props: Props) => {
                   />
 
                   <span className="font-semibold">
-                    New to BowalPay?{" "}
-                    <Link to="/accounts" className="text-blue">
-                      Sign Up!
+                    {LOGIN_FORM.new_user.label}{" "}
+                    <Link to={LOGIN_FORM.new_user.to} className="text-blue">
+                      {LOGIN_FORM.new_user.link_label}
                     </Link>
                   </span>
 

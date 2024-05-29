@@ -15,8 +15,8 @@ import LoginForm from "./forms/login-form";
 import SignupForm from "./forms/signup-form";
 import BusinessTypeRadio from "./radios/business-type-radio";
 import Divider from "./divider";
-import TextField from "./text-field";
 import CustomError from "./custom-error";
+import PrivacyPolicyCheck from "./privacy-policy-check";
 
 export {
   LandingNavigationBar,
@@ -36,6 +36,6 @@ export {
   SignupForm,
   BusinessTypeRadio,
   Divider,
-  TextField,
   CustomError,
+  PrivacyPolicyCheck,
 };
