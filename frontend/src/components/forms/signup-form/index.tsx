@@ -69,10 +69,10 @@ const SignupForm = (props: Props) => {
                   />
 
                   <ErrorMessage
-                    name="businessType"
+                    name="accountType"
                     component="div"
-                    id="businessType"
-                    className="text-red-700 text-xs md:text-sm absolute -bottom-4"
+                    id="accountType"
+                    className="text-red-700 text-xs font-semibold md:text-sm absolute -bottom-4"
                   />
                 </div>
               </div>
