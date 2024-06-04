@@ -1,4 +1,5 @@
 import { SignupForm } from "@/components";
+import { apiUrl } from "@/constants/data";
 import { useMutation } from "@tanstack/react-query";
 import axios, { AxiosError } from "axios";
 import { FormikHelpers } from "formik";
@@ -19,15 +20,11 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const RegisterRequestFunction = async (formValue: RegisterFormType) => {
-    const res = await axios.post(
-      "http://localhost:9000/api/v1/auth/register",
-      formValue,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await axios.post(`${apiUrl}/auth/register`, formValue, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     return res.data;
   };

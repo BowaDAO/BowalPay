@@ -7,7 +7,6 @@ const LandingPage = () => {
       <LandingBlack />
       <LandingNavigationBar />
       <Hero />
-
       <WhyBowalPay />
     </main>
   );

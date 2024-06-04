@@ -3,6 +3,7 @@ import { FormikHelpers } from "formik";
 import axios, { AxiosError } from "axios";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from "@/constants/data";
 
 const initialFormValues: LoginFormType = {
   emailAddress: "",
@@ -13,15 +14,11 @@ const Signin = () => {
   const navigate = useNavigate();
 
   const LoginRequestFunction = async (formValue: LoginFormType) => {
-    const res = await axios.post(
-      "http://localhost:9000/api/v1/auth/login",
-      formValue,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const res = await axios.post(`${apiUrl}/auth/login`, formValue, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     return res.data;
   };
