@@ -105,3 +105,14 @@ export const SIGNUP_FORM = {
 };
 
 export const apiUrl = `${import.meta.env.VITE_API_URL}/api/v1`;
+
+export const ACCOUNT_TYPE = {
+  heading: "Choose the right BowalPay account type for your business needs",
+  subheading: "Please select the option that describes you the best",
+};
+
+export const WHY_BOWALPAY = {
+  heading: "Why do business with BowalPay?",
+  subheading:
+    "Cross-border payments can get complicated but we've made it our mission to uncomplicate them.",
+};
