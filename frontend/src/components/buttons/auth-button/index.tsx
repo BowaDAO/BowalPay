@@ -1,3 +1,5 @@
+import { twMerge } from "tailwind-merge";
+
 type Props = {
   label: string;
   extraClasses?: string;
@@ -9,9 +11,11 @@ const AuthButton = (props: Props) => {
     <button
       type="submit"
       aria-label={props.label}
-      className={`${props.extraClasses} py-4 px-12 rounded-lg self-start ${
-        props.disabled ? " bg-greyishblack" : "button-background "
-      }  text-xl font-semibold text-white`}
+      className={twMerge(
+        props.extraClasses,
+        props.disabled ? " bg-greyishblack" : "button-background ",
+        " py-4 px-12 rounded-lg self-start text-xl font-semibold text-white"
+      )}
     >
       {props.label}
     </button>
