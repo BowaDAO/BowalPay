@@ -1,12 +1,5 @@
-import {
-  FcBusinessContact,
-  FcBusinessman,
-  FcFilingCabinet,
-  FcPlanner,
-  FcViewDetails,
-} from "react-icons/fc";
 import { AccountTypeBox } from "@/components";
-import { ACCOUNT_TYPE } from "@/constants/data";
+import { ACCOUNT_TYPE, accountTypes } from "@/constants/data";
 
 const ChooseAccountType = () => {
   return (
@@ -22,15 +15,13 @@ const ChooseAccountType = () => {
       </div>
 
       <div className="grid grid-cols-5 gap-4 w-full">
-        <AccountTypeBox icon={FcPlanner} label="Freelancer or SMB" />
-
-        <AccountTypeBox icon={FcViewDetails} label="Online seller" />
-
-        <AccountTypeBox icon={FcFilingCabinet} label="Affiliate marketer" />
-
-        <AccountTypeBox icon={FcBusinessContact} label="Vacation rental host" />
-
-        <AccountTypeBox icon={FcBusinessman} label="Individual" />
+        {accountTypes.map((accountType, index) => (
+          <AccountTypeBox
+            key={index}
+            icon={accountType.icon}
+            label={accountType.label}
+          />
+        ))}
       </div>
     </section>
   );

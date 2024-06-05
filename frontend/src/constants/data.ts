@@ -1,3 +1,11 @@
+import {
+  FcBusinessContact,
+  FcBusinessman,
+  FcFilingCabinet,
+  FcPlanner,
+  FcViewDetails,
+} from "react-icons/fc";
+
 export const LOGIN_FORM = {
   email: {
     name: "emailAddress",
@@ -116,3 +124,11 @@ export const WHY_BOWALPAY = {
   subheading:
     "Cross-border payments can get complicated but we've made it our mission to uncomplicate them.",
 };
+
+export const accountTypes = [
+  { icon: FcPlanner, label: "Freelancer or SMB" },
+  { icon: FcViewDetails, label: "Online seller" },
+  { icon: FcFilingCabinet, label: "Affiliate marketer" },
+  { icon: FcBusinessContact, label: "Vacation rental host" },
+  { icon: FcBusinessman, label: "Individual" },
+];
