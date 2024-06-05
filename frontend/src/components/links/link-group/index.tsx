@@ -1,5 +1,6 @@
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { twMerge } from "tailwind-merge";
 
 type Props = {
   heading: string;
@@ -13,11 +14,17 @@ const LinkGroup = (props: Props) => {
   return (
     <Link to={props.href}>
       <span
-        className={`${props.cardExtraClasses} flex items-center justify-between w-[250px] hover:bg-grey p-4 rounded-xl`}
+        className={twMerge(
+          props.cardExtraClasses,
+          "flex items-center justify-between w-[250px] hover:bg-grey p-4 rounded-xl"
+        )}
       >
         <span className="flex flex-col gap-3">
           <h4
-            className={`${props.headingExtraClasses} text-sm font-semibold text-black`}
+            className={twMerge(
+              props.headingExtraClasses,
+              "text-sm font-semibold text-black"
+            )}
           >
             {props.heading}
           </h4>

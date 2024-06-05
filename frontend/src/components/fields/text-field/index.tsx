@@ -15,7 +15,7 @@ type Props = {
 
 const TextField = (props: Props) => {
   return (
-    <div className={`relative ${props.extraClasses}`}>
+    <div className={twMerge(props.extraClasses, "relative")}>
       <Field name={props.name} id={props.id}>
         {({ field }: FieldProps) => {
           return (

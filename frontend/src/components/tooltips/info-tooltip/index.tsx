@@ -1,5 +1,6 @@
 import { Tooltip } from "react-tooltip";
 import { CiCircleInfo } from "react-icons/ci";
+import { Fragment } from "react/jsx-runtime";
 
 type Props = {
   id: string;
@@ -7,7 +8,7 @@ type Props = {
 };
 const InfoTooltip = (props: Props) => {
   return (
-    <>
+    <Fragment>
       <a data-tooltip-id={props.id} data-tooltip-content={props.content}>
         <CiCircleInfo />
       </a>
@@ -26,7 +27,7 @@ const InfoTooltip = (props: Props) => {
           zIndex: "100",
         }}
       />
-    </>
+    </Fragment>
   );
 };
 
