@@ -1,5 +1,5 @@
 import { Field, ErrorMessage, FieldProps } from "formik";
-import { Fragment } from "react/jsx-runtime";
+import { twMerge } from "tailwind-merge";
 
 type Props = {
   name: string;
@@ -8,9 +8,6 @@ type Props = {
   placeholder?: string;
   disabled?: boolean;
   autoComplete?: "on" | "off";
-  passwordField?: boolean;
-  passwordVisible?: boolean;
-  togglePasswordVisibilityIcon?: () => void;
   maxLength?: number;
   extraClasses?: string;
   labelVisible?: boolean;
@@ -25,9 +22,10 @@ const TextField = (props: Props) => {
             <span className="relative">
               <label
                 htmlFor={props.name}
-                className={`${
-                  props.labelVisible ? "visible" : "invisible"
-                } absolute text-chalk bg-white px-1 left-2`}
+                className={twMerge(
+                  props.labelVisible ? "visible" : "invisible",
+                  "absolute text-chalk bg-white px-1 left-2"
+                )}
                 style={{ transform: "translateY(-60%)" }}
               >
                 {props.placeholder}
@@ -46,17 +44,6 @@ const TextField = (props: Props) => {
           );
         }}
       </Field>
-
-      <Fragment>
-        {props.passwordField && (
-          <button
-            type="button"
-            aria-label="password-visibility-icon"
-            onClick={props.togglePasswordVisibilityIcon}
-            className="absolute right-4 top-4"
-          ></button>
-        )}
-      </Fragment>
 
       <ErrorMessage
         name={props.name}
