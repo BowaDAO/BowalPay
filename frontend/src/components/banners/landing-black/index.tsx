@@ -1,3 +1,4 @@
+import { blackBannerLinks } from "@/constants/data";
 import { Link } from "react-router-dom";
 
 const LandingBlack = () => {
@@ -6,15 +7,11 @@ const LandingBlack = () => {
       <div />
 
       <span className="flex items-center gap-4 text-white">
-        <Link to="/" className="text-xs font-medium">
-          RESOURCES
-        </Link>
-        <Link to="/" className="text-xs font-medium">
-          DEVELOPERS API
-        </Link>
-        <Link to="/" className="text-xs font-medium">
-          ABOUT US
-        </Link>
+        {blackBannerLinks.map((link, index) => (
+          <Link key={index} to={link.to} className="text-xs font-medium">
+            {link.label}
+          </Link>
+        ))}
 
         <span className="py-1 px-4 bg-greyishblack rounded-full text-xs font-medium">
           ENGLISH

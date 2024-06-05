@@ -132,3 +132,18 @@ export const accountTypes = [
   { icon: FcBusinessContact, label: "Vacation rental host" },
   { icon: FcBusinessman, label: "Individual" },
 ];
+
+export const blackBannerLinks = [
+  {
+    to: "/",
+    label: "RESOURCES",
+  },
+  {
+    to: "/",
+    label: "DEVELOPERS API",
+  },
+  {
+    to: "/",
+    label: "ABOUT US",
+  },
+];
