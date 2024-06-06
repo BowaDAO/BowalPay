@@ -11,7 +11,7 @@ type Props = {
 };
 
 const PasswordField = (props: Props) => {
-  const [showPassword, setShowPassword] = useState(true);
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <span className="flex items-center gap-2 relative w-fit">

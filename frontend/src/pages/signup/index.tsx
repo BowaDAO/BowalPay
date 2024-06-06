@@ -20,7 +20,7 @@ const Signup = () => {
   const navigate = useNavigate();
 
   const RegisterRequestFunction = async (formValue: RegisterFormType) => {
-    const res = await axios.post(`${apiUrl}/auth/register`, formValue, {
+    const res = await axios.post(apiUrl + "/auth/register", formValue, {
       headers: {
         "Content-Type": "application/json",
       },

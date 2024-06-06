@@ -22,7 +22,7 @@ const LandingNavigationBar = () => {
         <Logo />
 
         <span className="flex items-center gap-6">
-          <ul className="flex items-center gap-6">
+          <ul className="flex items-center gap-0">
             <li>
               <Navlink
                 href=""

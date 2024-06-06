@@ -15,7 +15,7 @@ const Navlink = (props: Props) => {
   return (
     <NavLink to={props.href}>
       <span
-        className="flex items-center gap-1 py-2 px-3 hover:bg-grey rounded-lg"
+        className="flex items-center gap-1 py-2 px-6 hover:bg-grey rounded-lg"
         onMouseLeave={() => {
           props.setActiveHover(false);
           props.onMouseLeave();

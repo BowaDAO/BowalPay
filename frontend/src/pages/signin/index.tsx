@@ -14,7 +14,7 @@ const Signin = () => {
   const navigate = useNavigate();
 
   const LoginRequestFunction = async (formValue: LoginFormType) => {
-    const res = await axios.post(`${apiUrl}/auth/login`, formValue, {
+    const res = await axios.post(apiUrl + "/auth/login", formValue, {
       headers: {
         "Content-Type": "application/json",
       },
