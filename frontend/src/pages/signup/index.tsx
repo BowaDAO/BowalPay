@@ -11,7 +11,7 @@ const initialFormValues: RegisterFormType = {
   emailAddress: "",
   confirmEmail: "",
   accountType: "",
-  dateOfBirth: null,
+  dateOfBirth: "",
   password: "",
   confirmPassword: "",
 };
@@ -45,7 +45,12 @@ const Signup = () => {
     values: RegisterFormType,
     formikHelpers: FormikHelpers<RegisterFormType>
   ) => {
-    await mutateAsync(values);
+    const userDob = new Date(values.dateOfBirth);
+    userDob.setUTCHours(0, 0, 0, 0);
+
+    const user = { ...values, dateOfBirth: userDob.toISOString() };
+
+    await mutateAsync(user);
     formikHelpers.resetForm();
   };
 

@@ -3,28 +3,28 @@ import {
   LoginFormSchema,
   RegisterFormSchema,
 } from "../utilities/validationSchemas";
-import { pool } from "../configurations/database";
-import { createNewUserQuery, userExistsQuery } from "../utilities/queries";
 import StatusCodes from "http-status-codes";
 import * as bcrypt from "bcrypt";
 import { jwtSign } from "../utilities/jwt";
 import { ValidationError } from "yup";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 const register = async (req: Request, res: Response) => {
-  const {
-    firstName: first_name,
-    lastName: last_name,
-    emailAddress: email_address,
-    dateOfBirth: date_of_birth,
-    accountType: account_type,
-  } = req.body;
+  const { firstName, lastName, emailAddress, dateOfBirth, accountType } =
+    req.body;
 
   try {
-    await RegisterFormSchema.validate(req.body, { abortEarly: false });
+    await RegisterFormSchema.validate(req.body);
 
-    const userExists = await pool.query(userExistsQuery, [email_address]);
+    const userExists = await prisma.user.findUnique({
+      where: {
+        email_address: emailAddress,
+      },
+    });
 
-    if (userExists.rowCount !== 0) {
+    if (userExists) {
       return res.status(StatusCodes.BAD_REQUEST).json({
         loggedIn: false,
         message: "User already exists, please sign in.",
@@ -33,16 +33,18 @@ const register = async (req: Request, res: Response) => {
 
     const password = await bcrypt.hash(req.body.password, 10);
 
-    const newUser = await pool.query(createNewUserQuery, [
-      first_name,
-      last_name,
-      email_address,
-      password,
-      date_of_birth,
-      account_type,
-    ]);
+    const newUser = await prisma.user.create({
+      data: {
+        first_name: firstName,
+        last_name: lastName,
+        email_address: emailAddress,
+        account_type: accountType,
+        date_of_birth: new Date(dateOfBirth),
+        password,
+      },
+    });
 
-    jwtSign({ id: newUser.rows[0].id }, process.env.JWT_SECRET_TOKEN!, {
+    jwtSign({ id: newUser.id }, process.env.JWT_SECRET_TOKEN!, {
       expiresIn: process.env.JWT_TOKEN_EXPIRATION_TIME!,
     })
       .then((token) => {
@@ -65,27 +67,30 @@ const register = async (req: Request, res: Response) => {
       loggedIn: false,
       message: "Something went wrong, please try again.",
     });
+  } finally {
+    await prisma.$disconnect();
   }
 };
 
 const login = async (req: Request, res: Response) => {
-  const { emailAddress: email_address, password } = req.body;
+  const { emailAddress, password } = req.body;
 
   try {
-    await LoginFormSchema.validate(req.body, { abortEarly: false });
+    await LoginFormSchema.validate(req.body);
 
-    const userExists = await pool.query(userExistsQuery, [email_address]);
+    const user = await prisma.user.findUnique({
+      where: {
+        email_address: emailAddress,
+      },
+    });
 
-    if (userExists.rowCount === 0) {
+    if (!user) {
       return res
         .status(StatusCodes.NOT_FOUND)
-        .json({ loggedIn: false, message: "User does not exist" });
+        .json({ loggedIn: false, message: "Incorrect credentials" });
     }
 
-    const passwordIsCorrect = await bcrypt.compare(
-      password,
-      userExists.rows[0].password
-    );
+    const passwordIsCorrect = await bcrypt.compare(password, user.password);
 
     if (!passwordIsCorrect) {
       return res
@@ -93,7 +98,7 @@ const login = async (req: Request, res: Response) => {
         .json({ loggedIn: false, message: "Incorrect password" });
     }
 
-    jwtSign({ id: userExists.rows[0].id }, process.env.JWT_SECRET_TOKEN!, {
+    jwtSign({ id: user.id }, process.env.JWT_SECRET_TOKEN!, {
       expiresIn: process.env.JWT_TOKEN_EXPIRATION_TIME!,
     })
       .then((token) => {
@@ -113,6 +118,8 @@ const login = async (req: Request, res: Response) => {
       loggedIn: false,
       message: "Something went wrong, please try again.",
     });
+  } finally {
+    await prisma.$disconnect();
   }
 };
 

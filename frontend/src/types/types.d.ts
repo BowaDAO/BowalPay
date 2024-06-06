@@ -11,7 +11,7 @@ type RegisterFormType = {
   password: string;
   confirmPassword: string;
   accountType: string;
-  dateOfBirth: Date | null;
+  dateOfBirth: string;
 };
 
 type LoginResponse = {
