@@ -93,6 +93,7 @@ const SignupForm = (props: Props) => {
                       placeholder={SIGNUP_FORM.firstname.placeholder}
                       labelVisible={formik.values.firstName.length > 0}
                       extraClasses="w-[430px]"
+                      autoComplete="off"
                     />
 
                     <QuestionMarkTooltip
@@ -109,6 +110,7 @@ const SignupForm = (props: Props) => {
                       placeholder={SIGNUP_FORM.lastname.placeholder}
                       labelVisible={formik.values.lastName.length > 0}
                       extraClasses="w-[430px]"
+                      autoComplete="off"
                     />
 
                     <QuestionMarkTooltip
@@ -125,6 +127,7 @@ const SignupForm = (props: Props) => {
                       placeholder={SIGNUP_FORM.email.placeholder}
                       labelVisible={formik.values.emailAddress.length > 0}
                       extraClasses="w-[430px]"
+                      autoComplete="off"
                     />
 
                     <QuestionMarkTooltip
@@ -140,6 +143,7 @@ const SignupForm = (props: Props) => {
                     placeholder={SIGNUP_FORM.confirm_email.placeholder}
                     labelVisible={formik.values.confirmEmail.length > 0}
                     extraClasses="w-[430px]"
+                    autoComplete="off"
                   />
 
                   <span className="flex items-center gap-2">
@@ -147,7 +151,6 @@ const SignupForm = (props: Props) => {
                       name={SIGNUP_FORM.dob.name}
                       id={SIGNUP_FORM.dob.id}
                       type="date"
-                      placeholder={SIGNUP_FORM.dob.placeholder}
                       labelVisible={Boolean(formik.values.dateOfBirth)}
                       extraClasses="w-[430px]"
                     />
