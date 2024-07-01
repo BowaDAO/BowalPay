@@ -1,3 +1,3 @@
-import ReactQueryProvider from "./react-query-provider";
+import AllProviders from "./all-providers";
 
-export { ReactQueryProvider };
+export { AllProviders };

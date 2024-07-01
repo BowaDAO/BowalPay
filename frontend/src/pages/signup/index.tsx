@@ -23,6 +23,7 @@ const Signup = () => {
     const res = await axios.post(apiUrl + "/auth/register", formValue, {
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
       },
     });
 
